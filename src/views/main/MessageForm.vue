@@ -26,7 +26,7 @@
       </b-form-group>
 
 
-      <b-button type="submit" variant="danger">Submit</b-button>
+      <b-button class="mr-2" type="submit" variant="danger">Submit</b-button>
       <b-button type="reset" >Cancel</b-button>
     </b-form>
   </div>
