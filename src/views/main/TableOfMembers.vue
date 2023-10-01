@@ -9,6 +9,8 @@
         :fields="fields"
         :per-page="perPage"
         :current-page="currentPage"
+        :sort-by.sync="sortBy"
+        :sort-desc.sync="sortDesc"
         small
     >
       <template #cell(show_details)="row">
@@ -56,13 +58,15 @@ export default {
   components: {PayoutForm, MessageForm},
   data() {
     return {
+      sortBy: 'last_login',
+      sortDesc: true,
       perPage: 5,
       currentPage: 1,
       items: members,
       fields: [
         {key: 'name', label: 'Name', },
-        {key: 'age', label: 'Age', },
-        {key: 'last_login', label: 'Last login', },
+        {key: 'age', label: 'Age', sortable: true},
+        {key: 'last_login', label: 'Last login', sortable: true},
         {key: 'show_details', label: '', },
       ],
       actions: [
