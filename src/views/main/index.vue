@@ -1,12 +1,13 @@
 <template>
   <div class="container">
-    AAA
+    <table-of-members></table-of-members>
   </div>
 </template>
 
 <script>
+import TableOfMembers from "@/views/main/TableOfMembers.vue";
 export default {
-
+components: {TableOfMembers}
 };
 </script>
 
