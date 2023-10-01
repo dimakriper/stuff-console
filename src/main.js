@@ -3,7 +3,17 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Vue.config.productionTip = false
+
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 new Vue({
   router,
