@@ -26,14 +26,13 @@
 
       <template #row-details="row">
         <b-card>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Age:</b></b-col>
-            <b-col>{{ row.item.age }}</b-col>
-          </b-row>
-
-          <b-button size="sm"  @click="row.toggleDetails">Cancel</b-button>
-          <b-button size="sm" variant="danger" @click="row.toggleDetails">Submit</b-button>
+          <message-form @hide-details="row.toggleDetails" v-if="row.item.selectedAction.key === 'message'"></message-form>
+          <payout-form @hide-details="row.toggleDetails" v-else-if="row.item.selectedAction.key === 'pay_out'"></payout-form>
         </b-card>
+      </template>
+
+      <template #cell(last_login)="row">
+        {{ formatDate(row.item.last_login) }}
       </template>
     </b-table>
     <div class="col">
@@ -48,9 +47,13 @@
 </template>
 
 <script>
+import MessageForm from "@/views/main/MessageForm.vue";
+import PayoutForm from "@/views/main/PayoutForm.vue";
+
 let members = require('@/assets/members.json');
 members.forEach(mem => {mem.selectedAction = {key: "pay_out", label: "Payout"}})
 export default {
+  components: {PayoutForm, MessageForm},
   data() {
     return {
       perPage: 5,
@@ -74,6 +77,10 @@ export default {
     }
   },
   methods: {
+    formatDate(unix_date){
+      let date = new Date(unix_date);
+      return date.toLocaleString()
+    },
     selectAction(row, item){
       row.item.selectedAction = item;
       if (!row.detailsShowing) row.toggleDetails();
