@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <h1>Добро пожаловать в консоль менеджмента персоналом!</h1>
+    <br/>
     <router-view/>
   </div>
 </template>
